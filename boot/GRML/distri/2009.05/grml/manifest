@@ -1,0 +1,5 @@
+kernel='2.6.28, 2.6.31.5'
+flavour=grml
+release_name=Lackdose Allergie
+debian_version=sid
+
