@@ -1,0 +1,39 @@
+Should depend on grml-core.
+
+Librarie for use in shell scripts, should handle syslog/parameter/debug stuff, common functions like check4root, should probably be a framework
+
+Example (just a sketch)
+
+grml-router.sh
+===========
+#!/bin/zsh
+
+NEED_ROOT=1
+RUN_INSTALLED=0
+CONFIG_FILE=/etc/grml/routersetup
+NEEDED_EXECUTABLE=/sbin/iptables
+
+
+main()
+{
+    . $CONFIG_FILE
+    if [ -z "$OUTDEV" ] ; then
+        eewarn "Outgoing device is not set in $CONFIG_FILE"
+        eewarn "Setting Outgoing device to auto"
+        OUTDEV=auto
+    fi
+
+    case "$OUTDEV" in
+        auto|default)
+        OUTDEV=$(defaultGWDev)
+        if [ -z "$OUTDEV" ] ; then
+            eerror "The outgoing device could not be determined."
+            eerror "Please adjust OUTDEV in $CONFIG_FILE"
+            exit 1
+        fi
+        ;;
+    esac
+    ....
+}
+
+. /usr/share/grml-shlib/shlib

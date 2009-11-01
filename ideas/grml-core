@@ -1,0 +1,4 @@
+create package grml-core, containing core functionality for grml-scripts, grml-autoconfig
+
+Should contain boot parameter handling, detection of grml system, check if system is installed to hd.
+

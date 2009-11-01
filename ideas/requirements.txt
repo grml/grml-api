@@ -1,0 +1,20 @@
+* grml-autoconfig
+* different grml-script having same problems (config file, check4root...)
+* tools for determing runtime information (kernel available)
+* common logging
+
+Proposed packages with no dependency
+====================
+grml-core     -  Common used grml specific solutions, probably merge with grml-api
+                    e.g. boot parameter handling (consider bootparam directory),
+                    determine current running version
+grml-etc-core -  _ONLY_ config files, NO grml/lsb-functions, no grml/script-functions
+grml-lsb      -  lsb stuff
+grml-api      -  Determine grml versions on boot media, available kernels/initrds
+                 incl. location in file system
+
+Package with dependencies
+===========================
+grml-shlib   -  Look&Feel, logging, common functions, e.g. modifyconfig, check4root...
+                Should it be a framework?
+                    * Probably as support for DISTRI should be included
